@@ -1,0 +1,21 @@
+{
+  "nom": "Chalet 55° — SnowWorld Amnéville",
+  "accroche": "Restaurant de montagne au pied des pistes, vue panoramique sur le Snowhall.",
+  "adresse": { "rue": "Allée du Snowhall", "cp": "57360", "ville": "Amnéville", "pays": "FR" },
+  "telephone": "03 56 71 99 90",
+  "telephone_intl": "+33356719990",
+  "capacite": 76,
+  "reservation": "https://www.google.com/maps/reserve/v/dine/c/02g12pzIw6g?source=pa&hl=fr-FR",
+  "itineraire": "https://www.google.com/maps/search/?api=1&query=Chalet+55+SnowWorld+Amn%C3%A9ville",
+  "horaires": [
+    { "jour": "Lundi", "code": "Mo", "services": [] },
+    { "jour": "Mardi", "code": "Tu", "services": [] },
+    { "jour": "Mercredi", "code": "We", "services": [["12:00", "14:00"], ["19:00", "21:30"]] },
+    { "jour": "Jeudi", "code": "Th", "services": [] },
+    { "jour": "Vendredi", "code": "Fr", "services": [["12:00", "14:00"], ["19:00", "21:30"]] },
+    { "jour": "Samedi", "code": "Sa", "services": [["12:00", "14:00"], ["19:00", "21:30"]] },
+    { "jour": "Dimanche", "code": "Su", "services": [["12:00", "14:00"]] }
+  ],
+  "menu": [],
+  "actus": []
+}

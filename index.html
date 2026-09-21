@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chalet 55° — SnowWorld Amnéville | Restaurant de montagne</title>
+<meta name="description" content="Chalet 55°, le restaurant de montagne de SnowWorld Amnéville : fondue, spécialités alpines et vue sur les pistes. Réservation en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f2ea;--surface:#fffaf3;--text:#2b211a;--muted:#6b5a4c;--accent:#8a3b1f;--accent-text:#fff;--line:#e3d7c6;--ok:#2f6b3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1713;--surface:#262019;--text:#f2e9dc;--muted:#bba892;--accent:#e08a5c;--accent-text:#1c1713;--line:#3a3128;--ok:#7cc48a}}
+:root[data-theme="dark"]{--bg:#1c1713;--surface:#262019;--text:#f2e9dc;--muted:#bba892;--accent:#e08a5c;--accent-text:#1c1713;--line:#3a3128;--ok:#7cc48a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:0 16px 64px}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0 0 .4em}
+h1{font-size:clamp(2rem,7vw,3rem)}
+h2{font-size:1.5rem;margin-top:2.5rem}
+header{padding:56px 0 24px}
+.lead{color:var(--muted);font-size:1.1rem;margin:0 0 1.5rem}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-text)}
+.statut{margin:1.25rem 0 0;font-weight:600}
+.statut.ouvert{color:var(--ok)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse}
+td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:last-child{text-align:right;color:var(--muted)}
+tr.auj td{font-weight:600;color:var(--text)}
+.plat{display:flex;gap:14px;align-items:flex-start}
+.plat img{width:84px;height:84px;object-fit:cover;border-radius:10px;flex:none}
+.plat h3{margin:0;font-size:1.05rem}
+.plat p,.actu p{margin:.2em 0 0;color:var(--muted)}
+.prix{margin-left:auto;font-weight:600;white-space:nowrap}
+.date{font-size:.85rem;color:var(--muted)}
+.vide{color:var(--muted);font-style:italic}
+address{font-style:normal}
+a{color:var(--accent)}
+footer{margin-top:3rem;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1 id="nom">Chalet 55° — SnowWorld Amnéville</h1>
+    <p class="lead" id="accroche"></p>
+    <div class="btns">
+      <a class="btn primary" id="resa" href="#">Réserver une table</a>
+      <a class="btn" id="tel" href="#">Appeler</a>
+    </div>
+    <p class="statut" id="statut"></p>
+  </header>
+
+  <section id="actus-section">
+    <h2>Actus</h2>
+    <div id="actus"></div>
+  </section>
+
+  <section>
+    <h2>Menu du jour</h2>
+    <div id="menu"></div>
+  </section>
+
+  <section>
+    <h2>Horaires</h2>
+    <div class="card"><table id="horaires"></table></div>
+  </section>
+
+  <section>
+    <h2>Nous trouver</h2>
+    <div class="card">
+      <address id="adresse"></address>
+      <p><a id="itin" href="#">Itinéraire Google Maps</a></p>
+    </div>
+  </section>
+
+  <footer id="pied"></footer>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const h = t => t.replace(':', 'h').replace('h00', 'h');
+
+fetch('donnees.json', {cache: 'no-cache'}).then(r => r.json()).then(d => {
+  const a = d.adresse;
+  $('nom').textContent = d.nom;
+  $('accroche').textContent = d.accroche;
+  $('resa').href = d.reservation;
+  $('tel').href = 'tel:' + d.telephone_intl;
+  $('tel').textContent = 'Appeler le ' + d.telephone;
+  $('itin').href = d.itineraire;
+  $('adresse').innerHTML = `<strong>${esc(d.nom)}</strong><br>${esc(a.rue)}<br>${esc(a.cp)} ${esc(a.ville)}<br><a href="tel:${esc(d.telephone_intl)}">${esc(d.telephone)}</a>`;
+  $('pied').textContent = `${d.nom} · ${d.capacite} couverts · ${a.rue}, ${a.cp} ${a.ville}`;
+
+  // Horaires + statut « ouvert maintenant »
+  const now = new Date(), idx = (now.getDay() + 6) % 7, hm = now.toTimeString().slice(0, 5);
+  $('horaires').innerHTML = d.horaires.map((j, i) =>
+    `<tr${i === idx ? ' class="auj"' : ''}><td>${j.jour}</td><td>${j.services.length ? j.services.map(s => h(s[0]) + '–' + h(s[1])).join(' · ') : 'Fermé'}</td></tr>`).join('');
+  const ouvert = d.horaires[idx].services.some(s => hm >= s[0] && hm < s[1]);
+  $('statut').textContent = ouvert ? '● Ouvert en ce moment' : '○ Fermé en ce moment';
+  $('statut').className = 'statut' + (ouvert ? ' ouvert' : '');
+
+  // Menu du jour (alimenté par le pipeline photo)
+  $('menu').innerHTML = d.menu.length ? d.menu.map(p => `<div class="card plat">
+    ${p.photo ? `<img src="${esc(p.photo)}" alt="${esc(p.nom)}" loading="lazy">` : ''}
+    <div><h3>${esc(p.nom)}</h3>${p.description ? `<p>${esc(p.description)}</p>` : ''}</div>
+    ${p.prix ? `<span class="prix">${esc(p.prix)} €</span>` : ''}</div>`).join('')
+    : '<p class="vide">La carte du moment est à découvrir sur place : fondue, spécialités alpines, options végétariennes et desserts.</p>';
+
+  // Actus (alimentées par le pipeline note vocale) — section masquée si vide
+  if (!d.actus.length) $('actus-section').hidden = true;
+  $('actus').innerHTML = d.actus.map(n => `<article class="card actu">
+    <div class="date">${new Date(n.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'long'})}</div>
+    <strong>${esc(n.titre)}</strong><p>${esc(n.texte)}</p></article>`).join('');
+
+  // Données structurées Google (Restaurant + réservation), générées depuis le même fichier
+  const ld = {
+    '@context': 'https://schema.org', '@type': 'Restaurant', name: d.nom,
+    telephone: d.telephone_intl, servesCuisine: ['Savoyarde', 'Montagnarde'], acceptsReservations: true,
+    address: {'@type': 'PostalAddress', streetAddress: a.rue, postalCode: a.cp, addressLocality: a.ville, addressCountry: a.pays},
+    openingHoursSpecification: d.horaires.flatMap(j => j.services.map(s => ({'@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/' + {Mo:'Monday',Tu:'Tuesday',We:'Wednesday',Th:'Thursday',Fr:'Friday',Sa:'Saturday',Su:'Sunday'}[j.code], opens: s[0], closes: s[1]}))),
+    potentialAction: {'@type': 'ReserveAction', target: d.reservation}
+  };
+  const s = document.createElement('script'); s.type = 'application/ld+json'; s.textContent = JSON.stringify(ld);
+  document.head.appendChild(s);
+});
+</script>
+</body>
+</html>
