@@ -3,257 +3,243 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chalet 55° — SnowWorld Amnéville | Fondue, raclette & cuisine de montagne</title>
-<meta name="description" content="Chalet 55°, le restaurant de montagne de SnowWorld Amnéville : fondue, raclette, spécialités alpines et grandes tablées en famille, vue sur les pistes. Réservation en ligne.">
+<title>Chalet 55° — SnowWorld Amnéville | Fondue, raclette, cuisine de montagne</title>
+<meta name="description" content="Chalet 55°, le restaurant de SnowWorld Amnéville : fondue, raclette et cuisine de montagne, face aux pistes. Réservation en ligne.">
 <meta property="og:title" content="Chalet 55° — SnowWorld Amnéville">
-<meta property="og:description" content="Fondue, raclette et grandes tablées au pied des pistes.">
+<meta property="og:description" content="Fondue, raclette et cuisine de montagne, face aux pistes du Snowhall.">
 <meta property="og:image" content="img/famille.jpg">
 <meta name="theme-color" content="#1a5f3f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Jost:wght@400;500&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sapin:#1a5f3f; --sapin-nuit:#0f2f22; --creme:#f7f0e4; --papier:#fffaf2; --bois:#7a4b26;
-  --braise:#c8641e; --braise-hover:#a9521a; --fromage:#f2c14e; --encre:#2a1f17; --doux:#6d5a48; --trait:#e6d8c2;
-  --ombre:0 10px 30px rgba(42,31,23,.12);
+  color-scheme:light;
+  --sapin:#1a5f3f; --sapin-fonce:#123f2b; --creme:#f5eee2; --papier:#fbf7f0; --bois:#6b4226;
+  --braise:#b5541a; --braise-fonce:#94430f; --encre:#2b2119; --doux:#6b5847; --trait:#dccfbb;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --creme:#17130f; --papier:#221c16; --encre:#f3eadc; --doux:#c2ae97; --trait:#3a3027; --ombre:0 10px 30px rgba(0,0,0,.4)}}
-:root[data-theme="dark"]{--creme:#17130f; --papier:#221c16; --encre:#f3eadc; --doux:#c2ae97; --trait:#3a3027; --ombre:0 10px 30px rgba(0,0,0,.4)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--creme);color:var(--encre);font:17px/1.65 "Nunito Sans",system-ui,sans-serif;padding-bottom:76px}
+html{-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--creme);color:var(--encre);font:18px/1.6 "Alegreya Sans",system-ui,sans-serif;touch-action:manipulation}
 img{max-width:100%;height:auto;display:block}
-a{color:inherit}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.1;margin:0}
-.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
-.sur{font-family:Jost,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;font-weight:500}
-.btn{display:inline-flex;align-items:center;gap:.5em;padding:14px 24px;border-radius:999px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s}
-.btn:hover{transform:translateY(-1px)}
-.btn-braise{background:var(--braise);color:#fff}
-.btn-braise:hover{background:var(--braise-hover)}
-.btn-ghost{border:2px solid rgba(255,255,255,.8);color:#fff}
-.btn-ghost:hover{background:rgba(255,255,255,.12)}
+a{color:var(--sapin);text-underline-offset:3px}
+a:hover{color:var(--braise)}
+:focus-visible{outline:3px solid var(--braise);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:Alegreya,Georgia,serif;font-weight:700;line-height:1.15;margin:0;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left))}
+.saut{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 12px;z-index:20}
+.saut:focus{left:8px}
 
-/* Hero */
-.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:space-between;color:#fff;
-  background:linear-gradient(180deg,rgba(15,47,34,.55) 0%,rgba(15,47,34,.25) 35%,rgba(15,47,34,.92) 100%),url(img/famille.jpg) center 40%/cover}
-.hero .wrap{width:100%;padding-top:32px;padding-bottom:56px}
-.hero-logo{width:clamp(110px,22vw,170px);margin:28px auto 0}
-.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:13ch;margin:.25em 0 .3em}
-.hero h1 em{font-style:italic;font-weight:400;color:var(--fromage)}
-.hero p{font-size:1.15rem;max-width:34ch;margin:0 0 1.6rem;opacity:.95}
-.hero .btns{display:flex;flex-wrap:wrap;gap:12px}
-.statut{display:inline-flex;align-items:center;gap:.55em;margin-top:1.4rem;padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);font-weight:600;font-size:.95rem}
-.statut i{width:9px;height:9px;border-radius:50%;background:#bbb}
-.statut.ouvert i{background:#6fd08c;box-shadow:0 0 0 4px rgba(111,208,140,.25)}
+/* En-tête */
+.entete{background:var(--sapin);color:#fff}
+.entete .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.entete img{width:112px}
+.entete nav{display:flex;gap:22px;font-weight:500}
+.entete nav a,.entete .tel{color:#fff;text-decoration:none}
+.entete nav a:hover,.entete .tel:hover{text-decoration:underline;color:#fff}
+.entete .tel{font-weight:700;white-space:nowrap}
+@media (max-width:720px){.entete nav{display:none}}
 
-/* Crête de montagne (écho du logo) */
-.crete{display:block;width:100%;height:36px;color:var(--creme);margin-top:-35px;position:relative}
+/* Photo d'ouverture */
+.ouverture{position:relative;background:var(--sapin-fonce)}
+.ouverture>img{width:100%;height:min(72vh,640px);object-fit:cover;object-position:center 45%}
+.ouverture .texte{position:absolute;inset:auto 0 0 0;padding:120px 0 36px;color:#fff;background:linear-gradient(transparent,rgba(12,36,25,.88))}
+h1{font-size:clamp(2.3rem,6vw,3.8rem)}
+.ouverture p{font-size:1.2rem;max-width:36ch;margin:.4em 0 1.3em}
+.btn{display:inline-block;padding:13px 22px;border-radius:4px;font-weight:700;text-decoration:none;background:var(--braise);color:#fff;transition:background-color .15s}
+.btn:hover{background:var(--braise-fonce);color:#fff}
+.btn.clair{background:transparent;border:2px solid currentColor;padding:11px 20px;color:#fff;margin-left:8px}
+.btn.clair:hover{background:rgba(255,255,255,.12)}
 
-section{padding:72px 0}
-.titre{text-align:center;margin-bottom:40px}
-.titre .sur{color:var(--braise)}
-.titre h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-top:.35em}
-.titre p{color:var(--doux);max-width:52ch;margin:.8em auto 0}
+/* Bandeau pratique */
+.pratique{background:var(--papier);border-bottom:1px solid var(--trait)}
+.pratique .wrap{display:flex;flex-wrap:wrap;gap:6px 32px;padding-top:16px;padding-bottom:16px;font-size:1rem}
+.pratique b{color:var(--sapin)}
+#statut.ouvert b{color:#23794a}
 
-/* Incontournables */
-.plats{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.plat{background:var(--papier);border-radius:20px;overflow:hidden;box-shadow:var(--ombre)}
-.plat img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.plat div{padding:20px 22px 24px}
-.plat h3{font-size:1.45rem;margin-bottom:.3em}
-.plat p{margin:0;color:var(--doux)}
-.plat.vert{background:var(--sapin);color:#fff;display:flex;flex-direction:column;justify-content:center}
-.plat.vert p{color:rgba(255,255,255,.85)}
-.plat.vert>div{padding:34px 28px}
-.plat.vert ul{margin:.8em 0 0;padding:0;list-style:none}
-.plat.vert li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+section{padding:64px 0}
+h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:.5em}
+.intro{color:var(--doux);max-width:58ch;margin:0 0 28px}
 
-/* Menu du jour & actus (données) */
-.fil{display:grid;gap:14px;max-width:760px;margin:0 auto}
-.carte{background:var(--papier);border:1px solid var(--trait);border-radius:16px;padding:16px 18px;display:flex;gap:16px;align-items:flex-start}
-.carte img{width:88px;height:88px;border-radius:12px;object-fit:cover;flex:none}
-.carte h3{font-size:1.15rem}
-.carte p{margin:.2em 0 0;color:var(--doux)}
-.prix{margin-left:auto;font-family:Fraunces,serif;font-size:1.2rem;color:var(--braise);white-space:nowrap}
-.date{color:var(--braise);font-size:.85rem;font-weight:700}
+/* La carte */
+.duo{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.duo figure{margin:0}
+.duo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px}
+.duo figcaption{padding-top:12px}
+.duo h3{font-size:1.5rem}
+.duo p{margin:.25em 0 0;color:var(--doux)}
+.aussi{margin-top:28px;padding-top:20px;border-top:1px solid var(--trait);color:var(--doux)}
+.aussi b{color:var(--encre)}
 
-/* Bandeau famille */
+/* Ardoise du jour */
+.ardoise{background:#1f2b25;color:#efe9dd;border:10px solid var(--bois);border-radius:6px;padding:28px 28px 22px;max-width:720px;box-shadow:inset 0 0 60px rgba(0,0,0,.35)}
+.ardoise h2{color:#fff;font-style:italic;font-weight:500}
+.ardoise ul{list-style:none;margin:0;padding:0}
+.ardoise li{display:flex;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px dashed rgba(239,233,221,.25)}
+.ardoise li:last-child{border-bottom:0}
+.ardoise img{width:64px;height:64px;object-fit:cover;border-radius:3px;align-self:center;flex:none}
+.ardoise .nom{font-family:Alegreya,serif;font-size:1.2rem;font-weight:700}
+.ardoise .desc{display:block;color:#c9c1b1;font-size:.95rem}
+.ardoise .prix{margin-left:auto;font-family:Alegreya,serif;font-size:1.2rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ardoise .vide{color:#c9c1b1;margin:0}
+.ardoise .vide a{color:#f0c46a}
+.actu{padding:16px 0;border-bottom:1px solid var(--trait);max-width:720px}
+.actu time{color:var(--braise);font-weight:700;font-size:.95rem}
+.actu h3{font-size:1.3rem;margin:.1em 0 .2em}
+.actu p{margin:0;color:var(--doux)}
+
+/* Famille */
 .famille{background:var(--sapin);color:#fff}
 .famille .wrap{display:grid;gap:36px;align-items:center;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.famille img{border-radius:22px;box-shadow:0 20px 40px rgba(0,0,0,.3);aspect-ratio:4/3;object-fit:cover;object-position:20% 50%;width:100%}
-.famille .sur{color:var(--fromage)}
-.famille h2{font-size:clamp(1.9rem,4.5vw,2.7rem);margin:.35em 0 .5em}
-.famille p{color:rgba(255,255,255,.88);margin:0 0 1em}
-.chiffres{display:flex;gap:28px;margin:1.6em 0}
-.chiffres b{display:block;font-family:Fraunces,serif;font-size:2.2rem;color:var(--fromage);line-height:1}
-.chiffres span{font-size:.9rem;opacity:.85}
+.famille img{border-radius:3px;aspect-ratio:4/3;object-fit:cover;object-position:18% 50%;width:100%}
+.famille p{color:rgba(255,255,255,.9);margin:0 0 1em}
+.famille a:not(.btn){color:#f0c46a}
 
-/* Infos pratiques */
-.infos{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.panneau{background:var(--papier);border-radius:20px;padding:26px 26px 22px;box-shadow:var(--ombre);border-top:6px solid var(--bois)}
-.panneau h3{font-size:1.5rem;margin-bottom:.6em}
-table{width:100%;border-collapse:collapse}
-td{padding:9px 0;border-bottom:1px dashed var(--trait)}
-td:last-child{text-align:right;color:var(--doux)}
-tr.ferme td{opacity:.5}
-tr.auj td{font-weight:700;color:var(--encre);opacity:1}
-tr.auj td:first-child::after{content:" · aujourd'hui";font-weight:400;color:var(--braise);font-size:.85em}
-address{font-style:normal;margin-bottom:1.2em}
-.liens{display:flex;flex-direction:column;gap:10px}
-.liens a{font-weight:700;color:var(--sapin);text-decoration:none}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .liens a{color:var(--fromage)}}
+/* Horaires & accès */
+.infos{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+td{padding:8px 0;border-bottom:1px solid var(--trait)}
+td:last-child{text-align:right}
+tr.ferme td{color:#8a7a69}
+tr.auj td{font-weight:700;color:var(--encre)}
+address{font-style:normal;margin-bottom:1em}
+.infos ul{margin:0;padding-left:1.1em}
+.infos li{margin:.3em 0}
 
-footer{background:var(--sapin-nuit);color:rgba(255,255,255,.75);text-align:center;padding:48px 16px;font-size:.92rem}
-footer img{width:130px;margin:0 auto 18px;opacity:.9}
+footer{background:var(--sapin-fonce);color:rgba(255,255,255,.8);padding:36px 0 100px;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+footer img{width:100px}
 
-/* Barre d'action mobile */
-.barre{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(15,47,34,.96);backdrop-filter:blur(6px);z-index:10}
-.barre a{flex:1;justify-content:center;padding:12px 10px}
-@media (min-width:760px){.barre{display:none}body{padding-bottom:0}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+/* Barre mobile */
+.barre{position:fixed;inset:auto 0 0 0;display:flex;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:var(--sapin-fonce);z-index:10}
+.barre a{flex:1;text-align:center;margin:0}
+@media (min-width:721px){.barre{display:none}footer{padding-bottom:36px}}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
 </head>
 <body>
+<a class="saut" href="#contenu">Aller au contenu</a>
 
-<header class="hero">
-  <img class="hero-logo" src="img/logo.png" alt="Chalet 55° — Alpine Favorites" width="560" height="266">
+<header class="entete">
   <div class="wrap">
-    <div class="sur">Restaurant de montagne · SnowWorld Amnéville</div>
-    <h1>Fondue, raclette &amp; <em>grandes tablées</em></h1>
-    <p>Au pied des pistes, on se retrouve autour du fromage qui fond, en famille ou entre amis.</p>
-    <div class="btns">
-      <a class="btn btn-braise" data-resa href="#">Réserver une table</a>
-      <a class="btn btn-ghost" data-tel href="#">Appeler</a>
-    </div>
-    <div class="statut" id="statut"><i></i><span></span></div>
+    <a href="./"><img src="img/logo.png" alt="Chalet 55°, accueil" width="560" height="266"></a>
+    <nav aria-label="Navigation principale"><a href="#carte">La carte</a><a href="#ardoise">Du jour</a><a href="#infos">Horaires &amp; accès</a></nav>
+    <a class="tel" data-tel href="#" translate="no"></a>
   </div>
 </header>
-<svg class="crete" viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 36V24l140-18 120 14 160-20 150 22 130-16 170 20 140-14 190 16v8z"/></svg>
 
-<section id="carte">
-  <div class="wrap">
-    <div class="titre">
-      <div class="sur">Nos incontournables</div>
-      <h2>La montagne dans l'assiette</h2>
-      <p>Des spécialités qui réchauffent après la glisse, à partager au centre de la table.</p>
+<main id="contenu">
+  <div class="ouverture">
+    <img src="img/famille.jpg" alt="Une famille à table au Chalet 55°, servie par une serveuse" width="1600" height="1066" fetchpriority="high">
+    <div class="texte"><div class="wrap">
+      <h1 translate="no">Chalet 55°</h1>
+      <p>Fondue, raclette et cuisine de montagne, face aux pistes de SnowWorld Amnéville.</p>
+      <a class="btn" data-resa href="#">Réserver une table</a><a class="btn clair" href="#carte">Voir la carte</a>
+    </div></div>
+  </div>
+
+  <div class="pratique"><div class="wrap">
+    <span id="statut"></span>
+    <span id="adresse-courte"></span>
+  </div></div>
+
+  <section id="carte"><div class="wrap">
+    <h2>La carte</h2>
+    <p class="intro">Une cuisine de chalet, généreuse et faite pour être partagée. Le caquelon ou l’appareil à raclette au milieu de la table, et chacun se sert.</p>
+    <div class="duo">
+      <figure><img src="img/fondue.jpg" alt="Pain plongé dans une fondue au fromage" width="1000" height="975" loading="lazy">
+        <figcaption><h3>La fondue</h3><p>Fromage fondu et pain à tremper, à partager à deux ou plus.</p></figcaption></figure>
+      <figure><img src="img/raclette.jpg" alt="Raclette qui fond sur des pommes de terre" width="1000" height="561" loading="lazy">
+        <figcaption><h3>La raclette</h3><p>Le fromage raclé à table, sur des pommes de terre chaudes.</p></figcaption></figure>
     </div>
-    <div class="plats">
-      <article class="plat"><img src="img/fondue.jpg" alt="Morceau de pain plongé dans une fondue au fromage" loading="lazy" width="1000" height="975">
-        <div><h3>La fondue</h3><p>Le caquelon au milieu de la table, le pain qui plonge, et personne ne veut perdre son morceau.</p></div></article>
-      <article class="plat"><img src="img/raclette.jpg" alt="Raclette qui fond sur une assiette avec une pomme de terre" loading="lazy" width="1000" height="561">
-        <div><h3>La raclette</h3><p>Le fromage qui coule sur les pommes de terre chaudes, le plat réconfort par excellence.</p></div></article>
-      <article class="plat vert"><div>
-        <div class="sur" style="color:var(--fromage)">Et aussi</div>
-        <h3 style="margin-top:.4em">Pour toutes les envies</h3>
-        <ul><li>Viandes &amp; plats régionaux</li><li>Options végétariennes</li><li>Desserts gourmands</li><li>Un verre face aux pistes</li></ul>
-      </div></article>
-    </div>
-  </div>
-</section>
+    <p class="aussi"><b>Et aussi :</b> viandes, plats régionaux, plats végétariens et desserts. Et pour un verre, la vue sur les pistes est comprise.</p>
+  </div></section>
 
-<section id="jour-section" style="padding-top:0">
-  <div class="wrap">
-    <div class="titre"><div class="sur">Cette semaine</div><h2>Menu du jour</h2></div>
-    <div class="fil" id="menu"></div>
-  </div>
-</section>
+  <section id="ardoise" style="padding-top:0"><div class="wrap">
+    <div class="ardoise"><h2>L’ardoise du jour</h2><ul id="menu"></ul></div>
+    <div id="actus-bloc" hidden><h2 style="margin-top:56px">Au chalet en ce moment</h2><div id="actus"></div></div>
+  </div></section>
 
-<section id="actus-section" style="padding-top:0" hidden>
-  <div class="wrap">
-    <div class="titre"><div class="sur">Au chalet</div><h2>Les actus</h2></div>
-    <div class="fil" id="actus"></div>
-  </div>
-</section>
-
-<section class="famille">
-  <div class="wrap">
-    <img src="img/famille.jpg" alt="Une famille attablée au Chalet 55°, servie par une serveuse" loading="lazy" width="1600" height="1066">
+  <section class="famille"><div class="wrap">
+    <img src="img/famille.jpg" alt="" width="1600" height="1066" loading="lazy">
     <div>
-      <div class="sur">Le moment qu'on attend</div>
-      <h2>Tout le monde à table</h2>
-      <p>Les enfants racontent leur première descente, les grands-parents trinquent, et la fondue arrive. Au Chalet 55°, on prend le temps, face aux pistes du Snowhall.</p>
-      <div class="chiffres">
-        <div><b id="couverts">76</b><span>couverts</span></div>
-        <div><b>7</b><span>services par semaine</span></div>
-      </div>
-      <a class="btn btn-braise" data-resa href="#">Réserver notre table</a>
+      <h2>Une grande table pour toute la famille</h2>
+      <p>Après la piste ou simplement pour le plaisir, on vient ici à plusieurs générations. La salle compte <span id="couverts"></span> couverts et donne directement sur le Snowhall.</p>
+      <p>Pour un anniversaire ou une sortie à partir de 10 personnes, faites une <a href="https://www.snowworld.com/fr/amneville/event-quote">demande de devis groupe</a>.</p>
+      <a class="btn" data-resa href="#">Réserver une table</a>
     </div>
-  </div>
-</section>
+  </div></section>
 
-<section id="infos">
-  <div class="wrap">
-    <div class="titre"><div class="sur">Infos pratiques</div><h2>Venir au chalet</h2></div>
-    <div class="infos">
-      <div class="panneau"><h3>Horaires</h3><table id="horaires"></table></div>
-      <div class="panneau"><h3>Nous trouver</h3>
-        <address id="adresse"></address>
-        <div class="liens">
-          <a id="itin" href="#">→ Itinéraire Google Maps</a>
-          <a data-tel href="#">→ Appeler</a>
-          <a href="https://www.snowworld.com/fr/amneville/event-quote">→ Groupes de 10 personnes et plus</a>
-        </div>
-      </div>
+  <section id="infos"><div class="wrap infos">
+    <div><h2>Horaires</h2><table id="horaires"></table></div>
+    <div><h2>Accès</h2>
+      <address id="adresse"></address>
+      <ul>
+        <li><a id="itin" href="#">Itinéraire sur Google Maps</a></li>
+        <li><a data-tel href="#">Appeler le restaurant</a></li>
+        <li><a data-resa href="#">Réserver en ligne</a></li>
+      </ul>
     </div>
-  </div>
-</section>
+  </div></section>
+</main>
 
-<footer>
+<footer><div class="wrap">
   <img src="img/logo.png" alt="Chalet 55°" width="560" height="266" loading="lazy">
-  <div id="pied"></div>
-</footer>
+  <div id="pied" translate="no"></div>
+</div></footer>
 
 <nav class="barre" aria-label="Actions rapides">
-  <a class="btn btn-braise" data-resa href="#">Réserver</a>
-  <a class="btn btn-ghost" data-tel href="#">Appeler</a>
+  <a class="btn" data-resa href="#">Réserver</a>
+  <a class="btn clair" data-tel href="#">Appeler</a>
 </nav>
 
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const h = t => t.replace(':', 'h').replace('h00', 'h');
+const euros = new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'});
 
 fetch('donnees.json', {cache: 'no-cache'}).then(r => r.json()).then(d => {
   const a = d.adresse;
   document.querySelectorAll('[data-resa]').forEach(e => e.href = d.reservation);
-  document.querySelectorAll('[data-tel]').forEach(e => { e.href = 'tel:' + d.telephone_intl; if (e.textContent === 'Appeler' && !e.closest('.barre')) e.textContent = 'Appeler le ' + d.telephone; });
+  document.querySelectorAll('[data-tel]').forEach(e => e.href = 'tel:' + d.telephone_intl);
+  document.querySelector('.entete .tel').textContent = d.telephone.replace(/ /g, ' ');
   $('itin').href = d.itineraire;
   $('couverts').textContent = d.capacite;
-  $('adresse').innerHTML = `<strong>${esc(d.nom)}</strong><br>${esc(a.rue)}<br>${esc(a.cp)} ${esc(a.ville)}<br>${esc(d.telephone)}`;
-  $('pied').innerHTML = `${esc(d.nom)}<br>${esc(a.rue)}, ${esc(a.cp)} ${esc(a.ville)} · ${esc(d.telephone)}`;
+  $('adresse').innerHTML = `<b translate="no">${esc(d.nom)}</b><br>${esc(a.rue)}<br>${esc(a.cp)} ${esc(a.ville)}<br>${esc(d.telephone)}`;
+  $('adresse-courte').innerHTML = `<b>Adresse</b> ${esc(a.rue)}, ${esc(a.ville)}`;
+  $('pied').textContent = `${d.nom} · ${a.rue}, ${a.cp} ${a.ville} · ${d.telephone}`;
 
-  // Horaires + statut (ouvert maintenant / prochaine ouverture)
+  // Horaires et statut du jour
   const now = new Date(), idx = (now.getDay() + 6) % 7, hm = now.toTimeString().slice(0, 5);
   $('horaires').innerHTML = d.horaires.map((j, i) => {
     const cls = [i === idx && 'auj', !j.services.length && 'ferme'].filter(Boolean).join(' ');
-    return `<tr${cls ? ` class="${cls}"` : ''}><td>${j.jour}</td><td>${j.services.length ? j.services.map(s => h(s[0]) + '–' + h(s[1])).join(' · ') : 'Fermé'}</td></tr>`;
+    return `<tr${cls ? ` class="${cls}"` : ''}><td>${j.jour}${i === idx ? ' (aujourd’hui)' : ''}</td><td>${j.services.length ? j.services.map(s => h(s[0]) + '–' + h(s[1])).join(', ') : 'fermé'}</td></tr>`;
   }).join('');
   const enCours = d.horaires[idx].services.find(s => hm >= s[0] && hm < s[1]);
   let txt;
-  if (enCours) txt = `Ouvert · service jusqu'à ${h(enCours[1])}`;
+  if (enCours) txt = `<b>Ouvert</b> jusqu’à ${h(enCours[1])}`;
   else for (let k = 0; k < 8 && !txt; k++) {
     const j = d.horaires[(idx + k) % 7], s = j.services.find(s => k > 0 || s[0] > hm);
-    if (s) txt = `Fermé · on vous accueille ${k === 0 ? "aujourd'hui" : k === 1 ? 'demain' : j.jour.toLowerCase()} à ${h(s[0])}`;
+    if (s) txt = `<b>Fermé</b> · prochain service ${k === 0 ? 'aujourd’hui' : k === 1 ? 'demain' : j.jour.toLowerCase()} à ${h(s[0])}`;
   }
-  $('statut').querySelector('span').textContent = txt;
+  $('statut').innerHTML = txt;
   if (enCours) $('statut').classList.add('ouvert');
 
-  // Menu du jour (pipeline photo)
-  $('menu').innerHTML = d.menu.length ? d.menu.map(p => `<div class="carte">
-    ${p.photo ? `<img src="${esc(p.photo)}" alt="${esc(p.nom)}" loading="lazy">` : ''}
-    <div><h3>${esc(p.nom)}</h3>${p.description ? `<p>${esc(p.description)}</p>` : ''}</div>
-    ${p.prix ? `<span class="prix">${esc(p.prix)} €</span>` : ''}</div>`).join('')
-    : `<div class="carte"><p style="margin:0">La carte du moment se découvre sur place. Une question sur un plat ? <a data-tel href="tel:${esc(d.telephone_intl)}">Appelez-nous au ${esc(d.telephone)}</a>.</p></div>`;
+  // Ardoise (pipeline photo)
+  $('menu').innerHTML = d.menu.length ? d.menu.map(p => `<li>
+    ${p.photo ? `<img src="${esc(p.photo)}" alt="" width="64" height="64" loading="lazy">` : ''}
+    <span><span class="nom">${esc(p.nom)}</span>${p.description ? `<span class="desc">${esc(p.description)}</span>` : ''}</span>
+    ${p.prix ? `<span class="prix">${euros.format(p.prix)}</span>` : ''}</li>`).join('')
+    : `<li><p class="vide">L’ardoise du jour est affichée en salle. Pour savoir ce qu’il y a aujourd’hui, appelez le <a href="tel:${esc(d.telephone_intl)}">${esc(d.telephone)}</a>.</p></li>`;
 
   // Actus (pipeline note vocale)
   if (d.actus.length) {
-    $('actus-section').hidden = false;
-    $('actus').innerHTML = d.actus.map(n => `<article class="carte"><div>
-      <div class="date">${new Date(n.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'long'})}</div>
-      <h3>${esc(n.titre)}</h3><p>${esc(n.texte)}</p></div></article>`).join('');
+    $('actus-bloc').hidden = false;
+    const fmt = new Intl.DateTimeFormat('fr-FR', {day: 'numeric', month: 'long'});
+    $('actus').innerHTML = d.actus.map(n => `<article class="actu"><time datetime="${esc(n.date)}">${fmt.format(new Date(n.date))}</time>
+      <h3>${esc(n.titre)}</h3><p>${esc(n.texte)}</p></article>`).join('');
   }
 
   // Données structurées Google
