@@ -3,82 +3,213 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chalet 55° — SnowWorld Amnéville | Restaurant de montagne</title>
-<meta name="description" content="Chalet 55°, le restaurant de montagne de SnowWorld Amnéville : fondue, spécialités alpines et vue sur les pistes. Réservation en ligne.">
+<title>Chalet 55° — SnowWorld Amnéville | Fondue, raclette & cuisine de montagne</title>
+<meta name="description" content="Chalet 55°, le restaurant de montagne de SnowWorld Amnéville : fondue, raclette, spécialités alpines et grandes tablées en famille, vue sur les pistes. Réservation en ligne.">
+<meta property="og:title" content="Chalet 55° — SnowWorld Amnéville">
+<meta property="og:description" content="Fondue, raclette et grandes tablées au pied des pistes.">
+<meta property="og:image" content="img/famille.jpg">
+<meta name="theme-color" content="#1a5f3f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Jost:wght@400;500&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7f2ea;--surface:#fffaf3;--text:#2b211a;--muted:#6b5a4c;--accent:#8a3b1f;--accent-text:#fff;--line:#e3d7c6;--ok:#2f6b3a}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1713;--surface:#262019;--text:#f2e9dc;--muted:#bba892;--accent:#e08a5c;--accent-text:#1c1713;--line:#3a3128;--ok:#7cc48a}}
-:root[data-theme="dark"]{--bg:#1c1713;--surface:#262019;--text:#f2e9dc;--muted:#bba892;--accent:#e08a5c;--accent-text:#1c1713;--line:#3a3128;--ok:#7cc48a}
+:root{
+  --sapin:#1a5f3f; --sapin-nuit:#0f2f22; --creme:#f7f0e4; --papier:#fffaf2; --bois:#7a4b26;
+  --braise:#c8641e; --braise-hover:#a9521a; --fromage:#f2c14e; --encre:#2a1f17; --doux:#6d5a48; --trait:#e6d8c2;
+  --ombre:0 10px 30px rgba(42,31,23,.12);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --creme:#17130f; --papier:#221c16; --encre:#f3eadc; --doux:#c2ae97; --trait:#3a3027; --ombre:0 10px 30px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--creme:#17130f; --papier:#221c16; --encre:#f3eadc; --doux:#c2ae97; --trait:#3a3027; --ombre:0 10px 30px rgba(0,0,0,.4)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif}
-main{max-width:720px;margin:0 auto;padding:0 16px 64px}
-h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0 0 .4em}
-h1{font-size:clamp(2rem,7vw,3rem)}
-h2{font-size:1.5rem;margin-top:2.5rem}
-header{padding:56px 0 24px}
-.lead{color:var(--muted);font-size:1.1rem;margin:0 0 1.5rem}
-.btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-block;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
-.btn.primary{background:var(--accent);color:var(--accent-text)}
-.statut{margin:1.25rem 0 0;font-weight:600}
-.statut.ouvert{color:var(--ok)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--creme);color:var(--encre);font:17px/1.65 "Nunito Sans",system-ui,sans-serif;padding-bottom:76px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.sur{font-family:Jost,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:14px 24px;border-radius:999px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-braise{background:var(--braise);color:#fff}
+.btn-braise:hover{background:var(--braise-hover)}
+.btn-ghost{border:2px solid rgba(255,255,255,.8);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+/* Hero */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:space-between;color:#fff;
+  background:linear-gradient(180deg,rgba(15,47,34,.55) 0%,rgba(15,47,34,.25) 35%,rgba(15,47,34,.92) 100%),url(img/famille.jpg) center 40%/cover}
+.hero .wrap{width:100%;padding-top:32px;padding-bottom:56px}
+.hero-logo{width:clamp(110px,22vw,170px);margin:28px auto 0}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:13ch;margin:.25em 0 .3em}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--fromage)}
+.hero p{font-size:1.15rem;max-width:34ch;margin:0 0 1.6rem;opacity:.95}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px}
+.statut{display:inline-flex;align-items:center;gap:.55em;margin-top:1.4rem;padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);font-weight:600;font-size:.95rem}
+.statut i{width:9px;height:9px;border-radius:50%;background:#bbb}
+.statut.ouvert i{background:#6fd08c;box-shadow:0 0 0 4px rgba(111,208,140,.25)}
+
+/* Crête de montagne (écho du logo) */
+.crete{display:block;width:100%;height:36px;color:var(--creme);margin-top:-35px;position:relative}
+
+section{padding:72px 0}
+.titre{text-align:center;margin-bottom:40px}
+.titre .sur{color:var(--braise)}
+.titre h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-top:.35em}
+.titre p{color:var(--doux);max-width:52ch;margin:.8em auto 0}
+
+/* Incontournables */
+.plats{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.plat{background:var(--papier);border-radius:20px;overflow:hidden;box-shadow:var(--ombre)}
+.plat img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.plat div{padding:20px 22px 24px}
+.plat h3{font-size:1.45rem;margin-bottom:.3em}
+.plat p{margin:0;color:var(--doux)}
+.plat.vert{background:var(--sapin);color:#fff;display:flex;flex-direction:column;justify-content:center}
+.plat.vert p{color:rgba(255,255,255,.85)}
+.plat.vert>div{padding:34px 28px}
+.plat.vert ul{margin:.8em 0 0;padding:0;list-style:none}
+.plat.vert li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+
+/* Menu du jour & actus (données) */
+.fil{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.carte{background:var(--papier);border:1px solid var(--trait);border-radius:16px;padding:16px 18px;display:flex;gap:16px;align-items:flex-start}
+.carte img{width:88px;height:88px;border-radius:12px;object-fit:cover;flex:none}
+.carte h3{font-size:1.15rem}
+.carte p{margin:.2em 0 0;color:var(--doux)}
+.prix{margin-left:auto;font-family:Fraunces,serif;font-size:1.2rem;color:var(--braise);white-space:nowrap}
+.date{color:var(--braise);font-size:.85rem;font-weight:700}
+
+/* Bandeau famille */
+.famille{background:var(--sapin);color:#fff}
+.famille .wrap{display:grid;gap:36px;align-items:center;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.famille img{border-radius:22px;box-shadow:0 20px 40px rgba(0,0,0,.3);aspect-ratio:4/3;object-fit:cover;object-position:20% 50%;width:100%}
+.famille .sur{color:var(--fromage)}
+.famille h2{font-size:clamp(1.9rem,4.5vw,2.7rem);margin:.35em 0 .5em}
+.famille p{color:rgba(255,255,255,.88);margin:0 0 1em}
+.chiffres{display:flex;gap:28px;margin:1.6em 0}
+.chiffres b{display:block;font-family:Fraunces,serif;font-size:2.2rem;color:var(--fromage);line-height:1}
+.chiffres span{font-size:.9rem;opacity:.85}
+
+/* Infos pratiques */
+.infos{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.panneau{background:var(--papier);border-radius:20px;padding:26px 26px 22px;box-shadow:var(--ombre);border-top:6px solid var(--bois)}
+.panneau h3{font-size:1.5rem;margin-bottom:.6em}
 table{width:100%;border-collapse:collapse}
-td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top}
-td:last-child{text-align:right;color:var(--muted)}
-tr.auj td{font-weight:600;color:var(--text)}
-.plat{display:flex;gap:14px;align-items:flex-start}
-.plat img{width:84px;height:84px;object-fit:cover;border-radius:10px;flex:none}
-.plat h3{margin:0;font-size:1.05rem}
-.plat p,.actu p{margin:.2em 0 0;color:var(--muted)}
-.prix{margin-left:auto;font-weight:600;white-space:nowrap}
-.date{font-size:.85rem;color:var(--muted)}
-.vide{color:var(--muted);font-style:italic}
-address{font-style:normal}
-a{color:var(--accent)}
-footer{margin-top:3rem;color:var(--muted);font-size:.9rem}
+td{padding:9px 0;border-bottom:1px dashed var(--trait)}
+td:last-child{text-align:right;color:var(--doux)}
+tr.ferme td{opacity:.5}
+tr.auj td{font-weight:700;color:var(--encre);opacity:1}
+tr.auj td:first-child::after{content:" · aujourd'hui";font-weight:400;color:var(--braise);font-size:.85em}
+address{font-style:normal;margin-bottom:1.2em}
+.liens{display:flex;flex-direction:column;gap:10px}
+.liens a{font-weight:700;color:var(--sapin);text-decoration:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .liens a{color:var(--fromage)}}
+
+footer{background:var(--sapin-nuit);color:rgba(255,255,255,.75);text-align:center;padding:48px 16px;font-size:.92rem}
+footer img{width:130px;margin:0 auto 18px;opacity:.9}
+
+/* Barre d'action mobile */
+.barre{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(15,47,34,.96);backdrop-filter:blur(6px);z-index:10}
+.barre a{flex:1;justify-content:center;padding:12px 10px}
+@media (min-width:760px){.barre{display:none}body{padding-bottom:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1 id="nom">Chalet 55° — SnowWorld Amnéville</h1>
-    <p class="lead" id="accroche"></p>
+
+<header class="hero">
+  <img class="hero-logo" src="img/logo.png" alt="Chalet 55° — Alpine Favorites" width="560" height="266">
+  <div class="wrap">
+    <div class="sur">Restaurant de montagne · SnowWorld Amnéville</div>
+    <h1>Fondue, raclette &amp; <em>grandes tablées</em></h1>
+    <p>Au pied des pistes, on se retrouve autour du fromage qui fond, en famille ou entre amis.</p>
     <div class="btns">
-      <a class="btn primary" id="resa" href="#">Réserver une table</a>
-      <a class="btn" id="tel" href="#">Appeler</a>
+      <a class="btn btn-braise" data-resa href="#">Réserver une table</a>
+      <a class="btn btn-ghost" data-tel href="#">Appeler</a>
     </div>
-    <p class="statut" id="statut"></p>
-  </header>
+    <div class="statut" id="statut"><i></i><span></span></div>
+  </div>
+</header>
+<svg class="crete" viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 36V24l140-18 120 14 160-20 150 22 130-16 170 20 140-14 190 16v8z"/></svg>
 
-  <section id="actus-section">
-    <h2>Actus</h2>
-    <div id="actus"></div>
-  </section>
-
-  <section>
-    <h2>Menu du jour</h2>
-    <div id="menu"></div>
-  </section>
-
-  <section>
-    <h2>Horaires</h2>
-    <div class="card"><table id="horaires"></table></div>
-  </section>
-
-  <section>
-    <h2>Nous trouver</h2>
-    <div class="card">
-      <address id="adresse"></address>
-      <p><a id="itin" href="#">Itinéraire Google Maps</a></p>
+<section id="carte">
+  <div class="wrap">
+    <div class="titre">
+      <div class="sur">Nos incontournables</div>
+      <h2>La montagne dans l'assiette</h2>
+      <p>Des spécialités qui réchauffent après la glisse, à partager au centre de la table.</p>
     </div>
-  </section>
+    <div class="plats">
+      <article class="plat"><img src="img/fondue.jpg" alt="Morceau de pain plongé dans une fondue au fromage" loading="lazy" width="1000" height="975">
+        <div><h3>La fondue</h3><p>Le caquelon au milieu de la table, le pain qui plonge, et personne ne veut perdre son morceau.</p></div></article>
+      <article class="plat"><img src="img/raclette.jpg" alt="Raclette qui fond sur une assiette avec une pomme de terre" loading="lazy" width="1000" height="561">
+        <div><h3>La raclette</h3><p>Le fromage qui coule sur les pommes de terre chaudes, le plat réconfort par excellence.</p></div></article>
+      <article class="plat vert"><div>
+        <div class="sur" style="color:var(--fromage)">Et aussi</div>
+        <h3 style="margin-top:.4em">Pour toutes les envies</h3>
+        <ul><li>Viandes &amp; plats régionaux</li><li>Options végétariennes</li><li>Desserts gourmands</li><li>Un verre face aux pistes</li></ul>
+      </div></article>
+    </div>
+  </div>
+</section>
 
-  <footer id="pied"></footer>
-</main>
+<section id="jour-section" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre"><div class="sur">Cette semaine</div><h2>Menu du jour</h2></div>
+    <div class="fil" id="menu"></div>
+  </div>
+</section>
+
+<section id="actus-section" style="padding-top:0" hidden>
+  <div class="wrap">
+    <div class="titre"><div class="sur">Au chalet</div><h2>Les actus</h2></div>
+    <div class="fil" id="actus"></div>
+  </div>
+</section>
+
+<section class="famille">
+  <div class="wrap">
+    <img src="img/famille.jpg" alt="Une famille attablée au Chalet 55°, servie par une serveuse" loading="lazy" width="1600" height="1066">
+    <div>
+      <div class="sur">Le moment qu'on attend</div>
+      <h2>Tout le monde à table</h2>
+      <p>Les enfants racontent leur première descente, les grands-parents trinquent, et la fondue arrive. Au Chalet 55°, on prend le temps, face aux pistes du Snowhall.</p>
+      <div class="chiffres">
+        <div><b id="couverts">76</b><span>couverts</span></div>
+        <div><b>7</b><span>services par semaine</span></div>
+      </div>
+      <a class="btn btn-braise" data-resa href="#">Réserver notre table</a>
+    </div>
+  </div>
+</section>
+
+<section id="infos">
+  <div class="wrap">
+    <div class="titre"><div class="sur">Infos pratiques</div><h2>Venir au chalet</h2></div>
+    <div class="infos">
+      <div class="panneau"><h3>Horaires</h3><table id="horaires"></table></div>
+      <div class="panneau"><h3>Nous trouver</h3>
+        <address id="adresse"></address>
+        <div class="liens">
+          <a id="itin" href="#">→ Itinéraire Google Maps</a>
+          <a data-tel href="#">→ Appeler</a>
+          <a href="https://www.snowworld.com/fr/amneville/event-quote">→ Groupes de 10 personnes et plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="img/logo.png" alt="Chalet 55°" width="560" height="266" loading="lazy">
+  <div id="pied"></div>
+</footer>
+
+<nav class="barre" aria-label="Actions rapides">
+  <a class="btn btn-braise" data-resa href="#">Réserver</a>
+  <a class="btn btn-ghost" data-tel href="#">Appeler</a>
+</nav>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -87,42 +218,51 @@ const h = t => t.replace(':', 'h').replace('h00', 'h');
 
 fetch('donnees.json', {cache: 'no-cache'}).then(r => r.json()).then(d => {
   const a = d.adresse;
-  $('nom').textContent = d.nom;
-  $('accroche').textContent = d.accroche;
-  $('resa').href = d.reservation;
-  $('tel').href = 'tel:' + d.telephone_intl;
-  $('tel').textContent = 'Appeler le ' + d.telephone;
+  document.querySelectorAll('[data-resa]').forEach(e => e.href = d.reservation);
+  document.querySelectorAll('[data-tel]').forEach(e => { e.href = 'tel:' + d.telephone_intl; if (e.textContent === 'Appeler' && !e.closest('.barre')) e.textContent = 'Appeler le ' + d.telephone; });
   $('itin').href = d.itineraire;
-  $('adresse').innerHTML = `<strong>${esc(d.nom)}</strong><br>${esc(a.rue)}<br>${esc(a.cp)} ${esc(a.ville)}<br><a href="tel:${esc(d.telephone_intl)}">${esc(d.telephone)}</a>`;
-  $('pied').textContent = `${d.nom} · ${d.capacite} couverts · ${a.rue}, ${a.cp} ${a.ville}`;
+  $('couverts').textContent = d.capacite;
+  $('adresse').innerHTML = `<strong>${esc(d.nom)}</strong><br>${esc(a.rue)}<br>${esc(a.cp)} ${esc(a.ville)}<br>${esc(d.telephone)}`;
+  $('pied').innerHTML = `${esc(d.nom)}<br>${esc(a.rue)}, ${esc(a.cp)} ${esc(a.ville)} · ${esc(d.telephone)}`;
 
-  // Horaires + statut « ouvert maintenant »
+  // Horaires + statut (ouvert maintenant / prochaine ouverture)
   const now = new Date(), idx = (now.getDay() + 6) % 7, hm = now.toTimeString().slice(0, 5);
-  $('horaires').innerHTML = d.horaires.map((j, i) =>
-    `<tr${i === idx ? ' class="auj"' : ''}><td>${j.jour}</td><td>${j.services.length ? j.services.map(s => h(s[0]) + '–' + h(s[1])).join(' · ') : 'Fermé'}</td></tr>`).join('');
-  const ouvert = d.horaires[idx].services.some(s => hm >= s[0] && hm < s[1]);
-  $('statut').textContent = ouvert ? '● Ouvert en ce moment' : '○ Fermé en ce moment';
-  $('statut').className = 'statut' + (ouvert ? ' ouvert' : '');
+  $('horaires').innerHTML = d.horaires.map((j, i) => {
+    const cls = [i === idx && 'auj', !j.services.length && 'ferme'].filter(Boolean).join(' ');
+    return `<tr${cls ? ` class="${cls}"` : ''}><td>${j.jour}</td><td>${j.services.length ? j.services.map(s => h(s[0]) + '–' + h(s[1])).join(' · ') : 'Fermé'}</td></tr>`;
+  }).join('');
+  const enCours = d.horaires[idx].services.find(s => hm >= s[0] && hm < s[1]);
+  let txt;
+  if (enCours) txt = `Ouvert · service jusqu'à ${h(enCours[1])}`;
+  else for (let k = 0; k < 8 && !txt; k++) {
+    const j = d.horaires[(idx + k) % 7], s = j.services.find(s => k > 0 || s[0] > hm);
+    if (s) txt = `Fermé · on vous accueille ${k === 0 ? "aujourd'hui" : k === 1 ? 'demain' : j.jour.toLowerCase()} à ${h(s[0])}`;
+  }
+  $('statut').querySelector('span').textContent = txt;
+  if (enCours) $('statut').classList.add('ouvert');
 
-  // Menu du jour (alimenté par le pipeline photo)
-  $('menu').innerHTML = d.menu.length ? d.menu.map(p => `<div class="card plat">
+  // Menu du jour (pipeline photo)
+  $('menu').innerHTML = d.menu.length ? d.menu.map(p => `<div class="carte">
     ${p.photo ? `<img src="${esc(p.photo)}" alt="${esc(p.nom)}" loading="lazy">` : ''}
     <div><h3>${esc(p.nom)}</h3>${p.description ? `<p>${esc(p.description)}</p>` : ''}</div>
     ${p.prix ? `<span class="prix">${esc(p.prix)} €</span>` : ''}</div>`).join('')
-    : '<p class="vide">La carte du moment est à découvrir sur place : fondue, spécialités alpines, options végétariennes et desserts.</p>';
+    : `<div class="carte"><p style="margin:0">La carte du moment se découvre sur place. Une question sur un plat ? <a data-tel href="tel:${esc(d.telephone_intl)}">Appelez-nous au ${esc(d.telephone)}</a>.</p></div>`;
 
-  // Actus (alimentées par le pipeline note vocale) — section masquée si vide
-  if (!d.actus.length) $('actus-section').hidden = true;
-  $('actus').innerHTML = d.actus.map(n => `<article class="card actu">
-    <div class="date">${new Date(n.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'long'})}</div>
-    <strong>${esc(n.titre)}</strong><p>${esc(n.texte)}</p></article>`).join('');
+  // Actus (pipeline note vocale)
+  if (d.actus.length) {
+    $('actus-section').hidden = false;
+    $('actus').innerHTML = d.actus.map(n => `<article class="carte"><div>
+      <div class="date">${new Date(n.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'long'})}</div>
+      <h3>${esc(n.titre)}</h3><p>${esc(n.texte)}</p></div></article>`).join('');
+  }
 
-  // Données structurées Google (Restaurant + réservation), générées depuis le même fichier
+  // Données structurées Google
+  const jours = {Mo:'Monday',Tu:'Tuesday',We:'Wednesday',Th:'Thursday',Fr:'Friday',Sa:'Saturday',Su:'Sunday'};
   const ld = {
-    '@context': 'https://schema.org', '@type': 'Restaurant', name: d.nom,
-    telephone: d.telephone_intl, servesCuisine: ['Savoyarde', 'Montagnarde'], acceptsReservations: true,
+    '@context': 'https://schema.org', '@type': 'Restaurant', name: d.nom, image: new URL('img/famille.jpg', location.href).href,
+    telephone: d.telephone_intl, servesCuisine: ['Savoyarde', 'Montagnarde', 'Fondue', 'Raclette'], acceptsReservations: true,
     address: {'@type': 'PostalAddress', streetAddress: a.rue, postalCode: a.cp, addressLocality: a.ville, addressCountry: a.pays},
-    openingHoursSpecification: d.horaires.flatMap(j => j.services.map(s => ({'@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/' + {Mo:'Monday',Tu:'Tuesday',We:'Wednesday',Th:'Thursday',Fr:'Friday',Sa:'Saturday',Su:'Sunday'}[j.code], opens: s[0], closes: s[1]}))),
+    openingHoursSpecification: d.horaires.flatMap(j => j.services.map(s => ({'@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/' + jours[j.code], opens: s[0], closes: s[1]}))),
     potentialAction: {'@type': 'ReserveAction', target: d.reservation}
   };
   const s = document.createElement('script'); s.type = 'application/ld+json'; s.textContent = JSON.stringify(ld);
