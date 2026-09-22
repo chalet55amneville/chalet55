@@ -1,18 +1,29 @@
 ---
 name: Chalet 55° — SnowWorld Amnéville
-status: draft
-updated: 2026-09-21
-colors: { sapin: "#1a5f3f", sapin-fonce: "#123f2b", creme: "#f5eee2", papier: "#fbf7f0", bois: "#6b4226", braise: "#b5541a", encre: "#2b2119", doux: "#6b5847" }
-typography: { display: "Alegreya 700 (italique 500 pour l'ardoise)", body: "Alegreya Sans 400/700, 18px" }
-rounded: { photo: 3px, bouton: 4px, ardoise: 6px }
+status: final
+updated: 2026-09-22
+colors: { bleu: "#013f53", bleu-fonce: "#012f3e", rouge: "#e22f0e", rouge-fonce: "#b82409", encre: "#141414", gris: "#577580", bord: "#ccd9dd", pale: "#f2f9fb", blanc: "#ffffff" }
+typography: { titres: "Archivo 600/700, capitales, interlignage 0.94", texte: "Helvetica Neue / Arial, 16px" }
+rounded: { tout: 0 }
 ---
 ## Brand & Style
-Chalet de montagne chaleureux : fondue, raclette, grandes tablées en famille. Vert sapin = couleur du logo officiel « Chalet 55° Alpine Favorites ». Ton : chaleureux, jamais promotionnel agressif, ne promet rien que le service ne tient pas (pas de « service rapide »).
-## Colors
-Sapin pour les aplats de marque, braise pour toute action (Réserver), fromage en accent sur fond sapin uniquement, crème/papier pour les fonds.
-## Components
-Bouton braise rectangulaire = Réserver ; bouton contour = Appeler / Voir la carte ; ardoise du jour (fond ardoise, cadre bois) ; bandeau pratique (statut + adresse) sous la photo ; barre fixe Réserver/Appeler sur mobile.
-## Do's and Don'ts
-Photos : uniquement celles de SnowWorld (famille.jpg, logo) ou Unsplash libres (fondue, raclette). Jamais de photos d'avis clients ou d'annuaires. Aucune donnée (horaires, prix, nom) en dur dans le HTML : tout vient de donnees.json.
+Charte alignée sur l'identité de la maison mère SnowWorld, relevée directement sur snowworld.com le 2026-09-22 : bleu pétrole, rouge, blanc, angles vifs, titres en capitales, motif de hachures diagonales. Le Chalet 55° est une enseigne du groupe : il en porte les codes, pas une identité concurrente.
 
-Pas de marqueurs « générés par IA » : pas de sur-titres en capitales espacées, pas de mot en italique coloré dans les titres, pas de blocs de chiffres, pas de flèches décoratives, pas de pastilles lumineuses, pas d'ombres portées sur des cartes arrondies. Titres alignés à gauche, textes courts et concrets, comme écrits par le restaurateur.
+## Colors
+Bleu #013f53 pour les titres, les aplats et le pied de page. Rouge #e22f0e réservé aux actions et aux filets d'accent, jamais en texte courant. Bleu pâle #f2f9fb pour les bandeaux d'information. Blanc dominant.
+
+## Typography
+SnowWorld utilise TT Supermolot Neue DemiBold, une police payante (TypeType). Le site utilise **Archivo** (Google Fonts, gratuite), grotesque carrée au dessin très proche, avec le même traitement : capitales, graisse 700, interlignage serré. Texte courant en Helvetica Neue / Arial, exactement comme snowworld.com.
+
+## Shapes
+Aucun arrondi nulle part : boutons, images et blocs à angles vifs, comme sur snowworld.com. Bandes de hachures diagonales rouges (repeating-linear-gradient à 115°) en rappel du motif de marque, en haut à droite de la photo d'ouverture et en tête du bloc « ardoise du jour ».
+
+## Components
+Bouton principal : rectangle rouge plein, capitales, Archivo 700. Bouton secondaire : contour blanc sur fond sombre, ou rectangle bleu sur fond clair. Titres de section suivis d'un filet rouge de 64 × 5 px. Bandeau d'état du jour en bleu pâle sous la photo d'ouverture, sur le modèle du « AUJOURD'HUI / FERMÉ » de l'en-tête SnowWorld. Barre fixe Réserver / Appeler sur mobile.
+
+## Logo
+Logo officiel Chalet 55° détouré : version bleue (`img/logo-bleu.png`) sur fond clair, version blanche (`img/logo.png`) sur fond bleu. La version verte d'origine n'est plus utilisée, le vert sortant de la palette SnowWorld.
+
+## Do's and Don'ts
+Photos : uniquement les photos SnowWorld et des photos libres de droits. Aucune image générée par IA montrant le restaurant, la salle ou les plats : ce serait présenter comme réel un lieu qui n'existe pas sous cette forme. Aucune donnée (horaires, prix, plats, nom) écrite en dur dans le HTML : tout vient de `donnees.json`.
+Pas de marqueurs « générés par IA » : pas de mot isolé en couleur dans un titre, pas de blocs de chiffres décoratifs, pas de flèches dans les liens, pas d'ombres portées sur des cartes arrondies.
