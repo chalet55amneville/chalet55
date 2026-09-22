@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chalet 55° — SnowWorld Amnéville | Fondue, raclette, cuisine de montagne</title>
-<meta name="description" content="Chalet 55°, le restaurant de SnowWorld Amnéville : fondue, raclette et cuisine de montagne, face aux pistes. Réservation en ligne.">
+<title>Chalet 55° — SnowWorld Amnéville | Fondue savoyarde et cuisine de montagne</title>
+<meta name="description" content="Chalet 55°, le restaurant de SnowWorld Amnéville : fondue savoyarde, planches à partager, tartiflette et burgers, face aux pistes. Carte, horaires et réservation en ligne.">
 <meta property="og:title" content="Chalet 55° — SnowWorld Amnéville">
-<meta property="og:description" content="Fondue, raclette et cuisine de montagne, face aux pistes du Snowhall.">
+<meta property="og:description" content="Fondue savoyarde, planches à partager et cuisine de montagne, face aux pistes du Snowhall.">
 <meta property="og:image" content="img/famille.jpg">
 <meta name="theme-color" content="#1a5f3f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,8 +69,19 @@ h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:.5em}
 .duo figcaption{padding-top:12px}
 .duo h3{font-size:1.5rem}
 .duo p{margin:.25em 0 0;color:var(--doux)}
-.aussi{margin-top:28px;padding-top:20px;border-top:1px solid var(--trait);color:var(--doux)}
-.aussi b{color:var(--encre)}
+/* La carte détaillée */
+#carte-liste{margin-top:44px;display:grid;gap:40px 56px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.section-carte h3{font-size:1.55rem;color:var(--sapin)}
+.section-carte .note{color:var(--doux);font-size:.95rem;margin:.2em 0 .8em}
+.section-carte ul{list-style:none;margin:0;padding:0}
+.section-carte li{padding:12px 0;border-bottom:1px solid var(--trait)}
+.section-carte li:last-child{border-bottom:0}
+.ligne{display:flex;align-items:baseline;gap:10px}
+.ligne .nom{font-weight:700}
+.ligne .points{flex:1;border-bottom:1px dotted var(--trait);transform:translateY(-4px)}
+.ligne .prix{font-family:Alegreya,serif;font-size:1.1rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.section-carte .desc{display:block;color:var(--doux);font-size:.96rem;margin-top:2px;max-width:46ch}
+.mentions{margin-top:36px;color:var(--doux);font-size:.88rem}
 
 /* Ardoise du jour */
 .ardoise{background:#1f2b25;color:#efe9dd;border:10px solid var(--bois);border-radius:6px;padding:28px 28px 22px;max-width:720px;box-shadow:inset 0 0 60px rgba(0,0,0,.35)}
@@ -134,7 +145,7 @@ footer img{width:100px}
     <img src="img/famille.jpg" alt="Une famille à table au Chalet 55°, servie par une serveuse" width="1600" height="1066" fetchpriority="high">
     <div class="texte"><div class="wrap">
       <h1 translate="no">Chalet 55°</h1>
-      <p>Fondue, raclette et cuisine de montagne, face aux pistes de SnowWorld Amnéville.</p>
+      <p>Fondue savoyarde, planches à partager et cuisine de montagne, face aux pistes de SnowWorld Amnéville.</p>
       <a class="btn" data-resa href="#">Réserver une table</a><a class="btn clair" href="#carte">Voir la carte</a>
     </div></div>
   </div>
@@ -146,14 +157,15 @@ footer img{width:100px}
 
   <section id="carte"><div class="wrap">
     <h2>La carte</h2>
-    <p class="intro">Une cuisine de chalet, généreuse et faite pour être partagée. Le caquelon ou l’appareil à raclette au milieu de la table, et chacun se sert.</p>
+    <p class="intro">Une cuisine de chalet, généreuse et faite pour être partagée : le caquelon au milieu de la table, les planches à picorer, et de quoi repartir rassasié.</p>
     <div class="duo">
       <figure><img src="img/fondue.jpg" alt="Pain plongé dans une fondue au fromage" width="1000" height="975" loading="lazy">
-        <figcaption><h3>La fondue</h3><p>Fromage fondu et pain à tremper, à partager à deux ou plus.</p></figcaption></figure>
-      <figure><img src="img/raclette.jpg" alt="Raclette qui fond sur des pommes de terre" width="1000" height="561" loading="lazy">
-        <figcaption><h3>La raclette</h3><p>Le fromage raclé à table, sur des pommes de terre chaudes.</p></figcaption></figure>
+        <figcaption><h3>La fondue savoyarde</h3><p>Fromage, charcuteries, pain et salade, à partir de deux personnes.</p></figcaption></figure>
+      <figure><img src="img/famille.jpg" alt="Table dressée au Chalet 55° avec plusieurs plats à partager" width="1600" height="1066" loading="lazy">
+        <figcaption><h3>Les planches</h3><p>Charcuterie, fromages ou frit maison, posées au centre de la table.</p></figcaption></figure>
     </div>
-    <p class="aussi"><b>Et aussi :</b> viandes, plats régionaux, plats végétariens et desserts. Et pour un verre, la vue sur les pistes est comprise.</p>
+    <div id="carte-liste"></div>
+    <p class="mentions" id="mentions"></p>
   </div></section>
 
   <section id="ardoise" style="padding-top:0"><div class="wrap">
@@ -227,6 +239,17 @@ fetch('donnees.json', {cache: 'no-cache'}).then(r => r.json()).then(d => {
   $('statut').innerHTML = txt;
   if (enCours) $('statut').classList.add('ouvert');
 
+  // La carte complète
+  if (d.carte) {
+    $('carte-liste').innerHTML = d.carte.sections.map(sec => `<div class="section-carte">
+      <h3>${esc(sec.titre)}</h3>${sec.note ? `<p class="note">${esc(sec.note)}</p>` : ''}
+      <ul>${sec.plats.map(p => `<li>
+        <div class="ligne"><span class="nom">${esc(p.nom)}</span><span class="points"></span><span class="prix">${esc(p.prix)}&nbsp;€</span></div>
+        ${p.desc ? `<span class="desc">${esc(p.desc)}</span>` : ''}</li>`).join('')}</ul>
+    </div>`).join('');
+    $('mentions').textContent = d.carte.note_bas;
+  }
+
   // Ardoise (pipeline photo)
   $('menu').innerHTML = d.menu.length ? d.menu.map(p => `<li>
     ${p.photo ? `<img src="${esc(p.photo)}" alt="" width="64" height="64" loading="lazy">` : ''}
@@ -246,7 +269,7 @@ fetch('donnees.json', {cache: 'no-cache'}).then(r => r.json()).then(d => {
   const jours = {Mo:'Monday',Tu:'Tuesday',We:'Wednesday',Th:'Thursday',Fr:'Friday',Sa:'Saturday',Su:'Sunday'};
   const ld = {
     '@context': 'https://schema.org', '@type': 'Restaurant', name: d.nom, image: new URL('img/famille.jpg', location.href).href,
-    telephone: d.telephone_intl, servesCuisine: ['Savoyarde', 'Montagnarde', 'Fondue', 'Raclette'], acceptsReservations: true,
+    telephone: d.telephone_intl, servesCuisine: ['Savoyarde', 'Montagnarde', 'Fondue'], acceptsReservations: true,
     address: {'@type': 'PostalAddress', streetAddress: a.rue, postalCode: a.cp, addressLocality: a.ville, addressCountry: a.pays},
     openingHoursSpecification: d.horaires.flatMap(j => j.services.map(s => ({'@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/' + jours[j.code], opens: s[0], closes: s[1]}))),
     potentialAction: {'@type': 'ReserveAction', target: d.reservation}

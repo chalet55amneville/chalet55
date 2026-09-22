@@ -16,6 +16,68 @@
     { "jour": "Samedi", "code": "Sa", "services": [["12:00", "14:00"], ["19:00", "21:30"]] },
     { "jour": "Dimanche", "code": "Su", "services": [["12:00", "14:00"]] }
   ],
+  "carte": {
+    "source": "Carte SnowWorld en vigueur",
+    "note_bas": "Liste des allergènes sur demande. L'abus d'alcool est dangereux pour la santé, à consommer avec modération.",
+    "sections": [
+      {
+        "titre": "Planches à partager",
+        "note": "Prix pour 2 personnes / pour 4 personnes",
+        "plats": [
+          { "nom": "Charcutière", "desc": "Jambon blanc, spianata, rosette et jambon cru AOC Savoie", "prix": "11,95 / 19,95" },
+          { "nom": "Fromagère", "desc": "Camembert, comté, reblochon et munster", "prix": "11,95 / 19,95" },
+          { "nom": "Crispy", "desc": "Calamars frits, filets de poulet panés, oignon rings, mozzarella sticks, sauce tartare et barbecue", "prix": "11,95 / 19,95" }
+        ]
+      },
+      {
+        "titre": "Spécialités montagnardes",
+        "note": "À partir de 2 personnes",
+        "plats": [
+          { "nom": "Fondue savoyarde", "desc": "Fromage, charcuteries, pain et salade", "prix": "21,50 / pers." },
+          { "nom": "Fondue bourguignonne", "desc": "Cœur de rumsteak, frites, salade et sauces", "prix": "21,50 / pers." }
+        ]
+      },
+      {
+        "titre": "Les plats",
+        "plats": [
+          { "nom": "Salade vosgienne", "desc": "Salade, pommes de terre, œufs, lardons et crème", "prix": "14,50" },
+          { "nom": "Tartiflette", "desc": "Reblochon AOP, courgette, aubergine, poivron, oignon et herbes aromatiques", "prix": "14,90" },
+          { "nom": "Chicken burger", "desc": "Pain brioché, aiguillettes de poulet panées, emmental, tomate, sauce maison, frites et salade", "prix": "15,90" },
+          { "nom": "Camembert pané au lait cru", "desc": "Pommes grenailles et salade", "prix": "15,95" },
+          { "nom": "Le burger montagnard", "desc": "Pain brioché, steak haché Angus, fromage à raclette, oignons confits et lard", "prix": "16,95" },
+          { "nom": "Pièce du boucher grillée 200 g", "desc": "Sauce du moment, frites et salade", "prix": "18,90" },
+          { "nom": "Suppléments", "desc": "Charcuterie 100 g, viande 100 g ou frites", "prix": "3,50" }
+        ]
+      },
+      {
+        "titre": "Desserts",
+        "plats": [
+          { "nom": "Crumble aux fruits de saison", "prix": "6,50" },
+          { "nom": "Crêpes au chocolat et éclats de noisettes", "prix": "6,50" },
+          { "nom": "Cheesecake maison du moment", "prix": "6,50" },
+          { "nom": "Coupe colonel au génépi", "prix": "8,00" },
+          { "nom": "Assiette de fromages", "prix": "8,00" }
+        ]
+      },
+      {
+        "titre": "Menu enfant",
+        "note": "Jusqu'à 12 ans",
+        "plats": [
+          { "nom": "Formule enfant", "desc": "Nuggets d'aiguillettes de poulet et frites ou cheeseburger, glace surprise au choix et boisson", "prix": "13,50" }
+        ]
+      },
+      {
+        "titre": "Au bar",
+        "plats": [
+          { "nom": "Boissons chaudes", "desc": "Espresso, café allongé, thé, cappuccino, latte, chocolat chaud", "prix": "dès 1,95" },
+          { "nom": "Softs et jus de fruits", "desc": "25 à 33 cl", "prix": "3,95" },
+          { "nom": "Bières pression", "desc": "Bud, Leffe blonde ou Ruby, monaco et panaché", "prix": "dès 3,50" },
+          { "nom": "Vins au verre", "desc": "Rouge, blanc ou rosé, 12,5 cl", "prix": "dès 4,95" },
+          { "nom": "Cocktails", "desc": "Hugo spritz, Apérol spritz et gin tonics maison", "prix": "dès 9,00" }
+        ]
+      }
+    ]
+  },
   "menu": [],
   "actus": []
 }
